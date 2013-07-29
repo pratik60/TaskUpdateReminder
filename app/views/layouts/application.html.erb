@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Bootstrap App" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Bootstrap App" %>">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+<header class="navbar navbar-fixed-top">
+  <nav class="navbar-inner">
+    <div class="container">
+      <%= render 'layouts/navigation' %>
+    </div>
+  </nav>
+</header>
+<div id="main" role="main">
+  <div class="container">
+    <% if current_page?(root_url) %>
+        <div class="row">
+          <div class="span12">
+            <%= render 'layouts/messages' %>
+          </div>
+        </div>
+        <div class="hero-unit">
+          <h1>Task Update Reminder</h1>
+          <p> Through this we introduce a system, where teams and managers can follow what the team is upto. </p>
+          <p> The only onus of responsibility on the team-members is to update their activities once a day. Hey forgetful one,
+            Don't worry, if you forget to update your activity we send you a quick email reminder</p>
+          <a href="#" class="btn btn-large btn-success">Get Started!!!</a>
+        </div>
+    <% else %>
+        <div class="content">
+          <div class="row">
+            <div class="span12">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <!--! end of .container -->
+</div>
+<!--! end of #main -->
+</body>
+<footer>
+  <%= render 'layouts/navigation_footer' %>
+</footer>
+</html>

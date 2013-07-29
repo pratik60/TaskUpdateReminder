@@ -1,4 +1,4 @@
 TaskUpdateReminder
 ==================
 
-A Ruby on Rails 4 App to follow activities of team members etc
+A Ruby on Rails App to follow activities of team members etc
